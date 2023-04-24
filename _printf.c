@@ -1,8 +1,9 @@
 #include "main.h"
-
 /**
- * _printf - function that produces output according to a format
+ * _printf_helper - function that produces output according to a format
  * @format: character string - composed of zero or more directives.
+ * @arg: character string - composed of zero or more directives.
+ * @i: character string - composed of zero or more directives.
  * Return:  the number of characters printed without null
  */
 int _printf_helper(const char *format, va_list arg, int i)
@@ -37,10 +38,16 @@ int _printf_helper(const char *format, va_list arg, int i)
 	}
 	return (res);
 }
+/**
+ * _printf - function that produces output according to a format
+ * @format: character string - composed of zero or more directives.
+ * Return:  the number of characters printed without null
+ */
 int _printf(const char *format, ...)
 {
 	int res = 0, i, count;
 	va_list arg;
+
 	va_start(arg, format);
 	if (format == NULL)
 		return (-1);
