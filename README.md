@@ -22,7 +22,7 @@
 </ul>
 <h6>Psuedo code :</h6>
 
-<!--
+
 - Checking is the format is NULL, and return (-1) is case it is;
 - Fetch variadic arguments;
 - loop over format;
@@ -49,5 +49,5 @@
 		- print character;
 		- increment the count;
 	- increment the itteration;
--->
+
 </body>
