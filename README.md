@@ -1,5 +1,5 @@
 <body>
-<h1>README 0x00-hello_world</h1>
+<h1>README PRINTF</h1>
 
 <h2>Write a function that produces output according to a format.</h2>
 <ul>
@@ -20,4 +20,34 @@
 <li>You don’t have to handle precision</li>
 <li>You don’t have to handle the length modifiers</li>
 </ul>
+<h6>Psuedo code :</h6>
+
+<!--
+- Checking is the format is NULL, and return (-1) is case it is;
+- Fetch variadic arguments;
+- loop over format;
+	- check if the character in the itteration is equal to %, if true :
+		- check if the next character is null, if true :
+			- return (-1);
+		- Use the switch to check the character that is after the %;
+			- in case it's s :
+				- Loop trough the argument and print using _putchar;
+				- count each character count++;
+				- increment the itteration;
+			- in case it's c :
+				- print the argument using _putchar;
+				- Increment the count;
+				- increment the itteration;
+			- in case % :
+				- print the curent character;
+				- Increment the counter;
+				- increment the itteration;
+			- default :
+				- print the character;
+				- increment the counter;
+	- if not equals to % :
+		- print character;
+		- increment the count;
+	- increment the itteration;
+-->
 </body>
