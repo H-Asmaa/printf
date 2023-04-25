@@ -14,6 +14,7 @@ int _rec_number(int num, int *count)
 		_putchar('2');
 		*count += 2;
 		_rec_number(147483648, count);
+		return (0);
 	}
 	else if (num < 0)
 	{
@@ -21,7 +22,7 @@ int _rec_number(int num, int *count)
 		*count += 1;
 		num *= (-1);
 	}
-	else if (num > 10)
+	if (num >= 10)
 	{
 		_rec_number(num / 10, count);
 		_putchar((num % 10) + '0');
