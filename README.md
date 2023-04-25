@@ -146,4 +146,27 @@ You don’t have to reproduce the buffer handling of the C library printf functi
 		}
 
 */
+/*
+Replacing the code above with a recursive function
+
+
+	num = 39
+	count = 0
+	negative number
+	- if num > 0
+		- _rec_number(num/10)
+		- print the num % 10
+		- count++
+	return count
+
+*/
+
+INT_MAX = 2147483647
+INT_MIN = -2147483647
+
+The problem is in the size of int, when we multiply by
+(-1) the MAX_MIN -2147483648 overflows on the memory space, and none is printed.
+
+We decicde to use long int as a type for num;
+We check with the checker and change it in case it's not accepted.
 -->

@@ -1,67 +1,103 @@
 #include "main.h"
 #include <stdio.h>
 /**
+ * _rec_number - recursive number
+ * @num: variable
+ * Return: int
+ */
+int _rec_number(long int num)
+{
+	int count = 0;
+
+	if (num < 0)
+	{
+		_putchar('-');
+		num *= (-1);
+	}
+	if (num > 0)
+	{
+		_rec_number(num / 10);
+		_putchar((num % 10) + '0');
+		count++;
+	}
+	return (count);
+}
+/**
+ * _printf_string - print string
+ * @tmp: pointer
+ * Return: int
+ */
+int _printf_string(char *tmp)
+{
+	int res = 0, i;
+	char *null = "(null)";
+
+	if (tmp == NULL)
+	{
+		for (i = 0; *(null + i) != '\0'; i++)
+		{
+			_putchar(*(null + i));
+			res++;
+		}
+	}
+	else
+	{
+		for (i = 0; tmp[i] != '\0'; i++)
+		{
+			_putchar(tmp[i]);
+			res++;
+		}
+	}
+	return (res);
+}
+/**
+ * _printf_char - print char
+ * @lettre: pointer
+ * Return: int
+ */
+int _printf_char(int lettre)
+{
+	_putchar(lettre);
+	return (1);
+}
+/**
  * _printf_helper - function that produces output according to a format
  * @format: character string - composed of zero or more directives.
  * @arg: character string - composed of zero or more directives.
  * @i: character string - composed of zero or more directives.
  * Return:  the number of characters printed without null
  */
-int _rec_number(int num)
-{
-	/*
-	num = 39
-	count = 0
-	negative number
-	- if num > 0
-		- _rec_number(num/10)
-		- print the num % 10
-		- count++
-	return count
-	*/
-}
 int _printf_helper(const char *format, va_list arg, int *i)
 {
-	int res = 0, l, j, num;
-	char *tmp, *null = "(null)";
+	int res = 0;
+	long int num;
+	char *tmp;
 
 	switch (*(format + *i + 1))
 	{
 	case 's':
 		tmp = va_arg(arg, char *);
-		if (tmp == NULL)
-		{
-			for (l = 0; *(null + l) != '\0'; l++)
-			{
-				_putchar(*(null + l));
-				res++;
-			}
-		}
-		else
-		{
-			for (j = 0; tmp[j] != '\0'; j++)
-			{
-				_putchar(tmp[j]);
-				res++;
-			}
-		}
+		res += _printf_string(tmp);
 		break;
 	case 'c':
-		_putchar(va_arg(arg, int));
-		res++;
+		res += _printf_char(va_arg(arg, int));
 		break;
 	case '%':
-		_putchar(format[*i]);
-		res++;
+		res += _printf_char('%');
 		break;
 	case 'i':
 	case 'd':
 		num = va_arg(arg, int);
-		res += _rec_number(num);
+		if (num == 0)
+		{
+			_putchar('0');
+			res++;
+		}
+		else
+			res += _rec_number(num);
 		break;
 	default:
-		_putchar(format[*i]);
-		res++;
+		res += _printf_char(format[*i]);
 		*i -= 1;
 		break;
 	}
