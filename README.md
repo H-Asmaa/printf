@@ -51,3 +51,7 @@
 	- increment the itteration;
 
 </body>
+
+
+- print asci code to char
+- treat (null)
