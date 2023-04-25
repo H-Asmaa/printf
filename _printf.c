@@ -14,7 +14,7 @@ int _printf_helper(const char *format, va_list arg, int i)
 	switch (*format)
 	{
 	case 's':
-		tmp = va_arg(arg, int);
+		tmp = va_arg(arg, char *);
 		for (i = 0; tmp[j] != '\0'; i++)
 		{
 			_putchar(tmp[j]);
@@ -27,12 +27,12 @@ int _printf_helper(const char *format, va_list arg, int i)
 		i++;
 		break;
 	case '%':
-		_putchar(va_arg(arg, int));
+		_putchar(format[i]);
 		res++;
 		i++;
 		break;
 	default:
-		_putchar(va_arg(arg, int));
+		_putchar(format[i]);
 		res++;
 		break;
 	}
