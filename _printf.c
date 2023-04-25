@@ -1,27 +1,32 @@
 #include "main.h"
 #include <stdio.h>
-
 /**
  * _rec_number - recursive number
  * @num: variable
+ * @count: pointer
  * Return: int
  */
-int _rec_number(int num)
+int _rec_number(int num, int *count)
 {
-	int count = 0;
-
-	if (num < 0)
+	if (num == -2147483648)
+	{
+		_putchar('-');
+		_putchar('2');
+		*count += 2;
+		_rec_number(147483648, count);
+	}
+	else if (num < 0)
 	{
 		_putchar('-');
 		num *= (-1);
 	}
 	if (num > 0)
 	{
-		_rec_number(num / 10);
+		_rec_number(num / 10, count);
 		_putchar((num % 10) + '0');
-		count++;
+		*count += 1;
 	}
-	return (count);
+	return (0);
 }
 /**
  * _printf_string - print string
@@ -60,8 +65,7 @@ int _printf_string(char *tmp)
  */
 int _printf_helper(const char *format, va_list arg, int *i)
 {
-	int res = 0;
-	int num;
+	int res = 0, num;
 	char *tmp;
 
 	switch (*(format + *i + 1))
@@ -87,7 +91,7 @@ int _printf_helper(const char *format, va_list arg, int *i)
 			res++;
 		}
 		else
-			res += _rec_number(num);
+			_rec_number(num, &res);
 		break;
 	default:
 		_putchar(format[*i]);
