@@ -1,5 +1,7 @@
 #include "main.h"
 #include <stdio.h>
+
+
 /**
  * _rec_number - recursive number
  * @num: variable
@@ -51,16 +53,6 @@ int _printf_string(char *tmp)
 	return (res);
 }
 /**
- * _printf_char - print char
- * @lettre: pointer
- * Return: int
- */
-int _printf_char(int lettre)
-{
-	_putchar(lettre);
-	return (1);
-}
-/**
  * _printf_helper - function that produces output according to a format
  * @format: character string - composed of zero or more directives.
  * @arg: character string - composed of zero or more directives.
@@ -80,10 +72,12 @@ int _printf_helper(const char *format, va_list arg, int *i)
 		res += _printf_string(tmp);
 		break;
 	case 'c':
-		res += _printf_char(va_arg(arg, int));
+		_putchar(va_arg(arg, int));
+		res++;
 		break;
 	case '%':
-		res += _printf_char('%');
+		_putchar(format[*i]);
+		res++;
 		break;
 	case 'i':
 	case 'd':
@@ -97,7 +91,8 @@ int _printf_helper(const char *format, va_list arg, int *i)
 			res += _rec_number(num);
 		break;
 	default:
-		res += _printf_char(format[*i]);
+		_putchar(format[*i]);
+		res++;
 		*i -= 1;
 		break;
 	}
