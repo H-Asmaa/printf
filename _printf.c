@@ -1,13 +1,12 @@
 #include "main.h"
 #include <stdio.h>
 
-
 /**
  * _rec_number - recursive number
  * @num: variable
  * Return: int
  */
-int _rec_number(long int num)
+int _rec_number(int num)
 {
 	int count = 0;
 
@@ -62,7 +61,7 @@ int _printf_string(char *tmp)
 int _printf_helper(const char *format, va_list arg, int *i)
 {
 	int res = 0;
-	long int num;
+	int num;
 	char *tmp;
 
 	switch (*(format + *i + 1))
