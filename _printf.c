@@ -18,12 +18,18 @@ int _rec_number(int num, int *count)
 	else if (num < 0)
 	{
 		_putchar('-');
+		*count += 1;
 		num *= (-1);
 	}
-	if (num > 0)
+	else if (num > 10)
 	{
 		_rec_number(num / 10, count);
 		_putchar((num % 10) + '0');
+		*count += 1;
+	}
+	else if (num < 10)
+	{
+		_putchar(num + '0');
 		*count += 1;
 	}
 	return (0);
@@ -85,13 +91,7 @@ int _printf_helper(const char *format, va_list arg, int *i)
 	case 'i':
 	case 'd':
 		num = va_arg(arg, int);
-		if (num == 0)
-		{
-			_putchar('0');
-			res++;
-		}
-		else
-			_rec_number(num, &res);
+		_rec_number(num, &res);
 		break;
 	default:
 		_putchar(format[*i]);
