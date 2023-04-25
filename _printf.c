@@ -7,9 +7,22 @@
  * @i: character string - composed of zero or more directives.
  * Return:  the number of characters printed without null
  */
+int _rec_number(int num)
+{
+	/*
+	num = 39
+	count = 0
+	negative number
+	- if num > 0
+		- _rec_number(num/10)
+		- print the num % 10
+		- count++
+	return count
+	*/
+}
 int _printf_helper(const char *format, va_list arg, int *i)
 {
-	int res = 0, l, j;
+	int res = 0, l, j, num;
 	char *tmp, *null = "(null)";
 
 	switch (*(format + *i + 1))
@@ -40,6 +53,11 @@ int _printf_helper(const char *format, va_list arg, int *i)
 	case '%':
 		_putchar(format[*i]);
 		res++;
+		break;
+	case 'i':
+	case 'd':
+		num = va_arg(arg, int);
+		res += _rec_number(num);
 		break;
 	default:
 		_putchar(format[*i]);
