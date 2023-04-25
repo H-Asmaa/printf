@@ -55,3 +55,5 @@
 
 - print asci code to char
 - treat (null)
+- %\0 return number is not -1
+- _printf("test%"); shouldnt print test at start
