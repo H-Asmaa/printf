@@ -20,36 +20,51 @@
 <li>You don’t have to handle precision</li>
 <li>You don’t have to handle the length modifiers</li>
 </ul>
-<!--<h6>Psuedo code :</h6>-->
-
-</body>
-<!--
-- Checking is the format is NULL, and return (-1) is case it is;
-- Fetch variadic arguments;
-- loop over format;
-	- check if the character in the itteration is equal to %, if true :
-		- check if the next character is null, if true :
-			- return (-1);
-		- Use the switch to check the character that is after the %;
-			- in case it's s :
-				- Loop trough the argument and print using _putchar;
-				- count each character count++;
-				- increment the itteration;
-			- in case it's c :
-				- print the argument using _putchar;
-				- Increment the count;
-				- increment the itteration;
-			- in case % :
-				- print the curent character;
-				- Increment the counter;
-				- increment the itteration;
-			- default :
-				- print the character;
-				- increment the counter;
-	- if not equals to % :
-		- print character;
-		- increment the count;
-	- increment the itteration;
+<h6>Psuedo code :</h6>
+<ul>
+	<li>Checking is the format is NULL, and return (-1) is case it is</li>
+	<li>Loop over format</li>
+	<ul>
+		<li>Check if the character in the itteration is equal to %, if true : </li>
+		<ul>
+			<li>Check if the next character is null, if true :</li>
+			<ul>
+				<li>Return (-1)</li>
+			</ul>
+		</ul>
+		<li>Use the switch to check the character that is after the %;</li>
+		<ul>
+			<li>In case it's s :</li>
+			<ul>
+				<li>Print using _printf_string<p>_printf_string is a function that takes the argument as string, loops trough it and increment the res with every charcter. If the string is null, it prints (null) to the standard output. Else print the string and increment the res as well. Eventually, return the res back to the _printf_helper function.</p></li>
+			</ul>
+			<li>In case it's c :</li>
+			<ul>
+				<li>Print the argument using _putchar</li>
+				<li>Increment the count</li>
+			</ul>
+			<li>In case % :</li>
+			<ul>
+				<li>Print the curent character</li>
+				<li>Increment the counter</li>
+			</ul>
+			<li>Default :</li>
+			<ul>
+				<li>Print the character</li>
+				<li>Increment the counter</li>
+				<li>Decrement the iteration</li>
+			</ul>
+			<li>Increment the iteration</li>
+			<li>Return the res</li>
+		</ul>
+		<li>If not equals to % </li>
+		<ul>
+			<li>Print character</li>
+			<li>Increment the count</li>
+		</ul>
+		<li>Increment the itteration</li>
+	</ul>
+</ul>
 
 
 <!--
@@ -86,9 +101,6 @@ notes task1:
 		starts with 0x or 0X :hexadecimal
 
 
-(
-	behavior of %i and %d can differ in some edge cases when dealing with special values like NaN, Inf, and negative zero. However, these cases are relatively rare and are likely not to affect most programming tasks.
-)
 
 notice they remove :
 You don’t have to reproduce the buffer handling of the C library printf function
@@ -170,11 +182,4 @@ The problem is in the size of int, when we multiply by
 We decicde to use long int as a type for num;
 We check with the checker and change it in case it's not accepted.
 -->
-
-
-- buffer
--
-
-
-
-- i wanna see if i change unsing int, to int if it goona work same
+</body>
