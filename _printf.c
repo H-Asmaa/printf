@@ -1,34 +1,6 @@
 #include "main.h"
 #include <stdio.h>
 /**
- * _printf_string - print string
- * @tmp: pointer
- * Return: int
- */
-int _printf_string(char *tmp)
-{
-	int res = 0, i;
-	char *null = "(null)";
-
-	if (tmp == NULL)
-	{
-		for (i = 0; *(null + i) != '\0'; i++)
-		{
-			_putchar(*(null + i));
-			res++;
-		}
-	}
-	else
-	{
-		for (i = 0; tmp[i] != '\0'; i++)
-		{
-			_putchar(tmp[i]);
-			res++;
-		}
-	}
-	return (res);
-}
-/**
  * _rec_number - recursive number
  * @num: variable
  * @count: pointer
@@ -64,6 +36,56 @@ int _rec_number(int num, int *count)
 	return (0);
 }
 /**
+ * _printf_string - print string
+ * @tmp: pointer
+ * Return: int
+ */
+int _printf_string(char *tmp)
+{
+	int res = 0, i;
+	char *null = "(null)";
+
+	if (tmp == NULL)
+	{
+		for (i = 0; *(null + i) != '\0'; i++)
+		{
+			_putchar(*(null + i));
+			res++;
+		}
+	}
+	else
+	{
+		for (i = 0; tmp[i] != '\0'; i++)
+		{
+			_putchar(tmp[i]);
+			res++;
+		}
+	}
+	return (res);
+}
+/**
+ * _printf_binary - print string
+ * @num: variable
+ * @count: pointer
+ * Return: int
+ */
+int _printf_binary(int num, int *count)
+{
+	int binary = 0, base = 1;
+
+	if (num == 0)
+		(*count)++;
+	while (num != 0)
+	{
+		binary += (num % 2) * base;
+		base *= 10;
+		num /= 2;
+		(*count)++;
+	}
+	_printf("%d", binary);
+	return (0);
+}
+/**
  * _printf_helper - function that produces output according to a format
  * @format: character string - composed of zero or more directives.
  * @arg: character string - composed of zero or more directives.
@@ -94,6 +116,10 @@ int _printf_helper(const char *format, va_list arg, int *i)
 		num = va_arg(arg, int);
 		_rec_number(num, &res);
 		break;
+	case 'b':
+		num = va_arg(arg, int);
+		_printf_binary(num, &res);
+		break;
 	default:
 		_putchar(format[*i]);
 		res++;
@@ -103,8 +129,6 @@ int _printf_helper(const char *format, va_list arg, int *i)
 	*i += 1;
 	return (res);
 }
-
-
 /**
  * _printf - function that produces output according to a format
  * @format: character string - composed of zero or more directives.
