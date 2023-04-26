@@ -64,6 +64,28 @@ int _printf_string(char *tmp)
 	return (res);
 }
 /**
+ * _printf_binary - print string
+ * @num: variable
+ * @count: pointer
+ * Return: int
+ */
+int _printf_binary(int num, int *count)
+{
+	int binary = 0, base = 1;
+
+	if (num == 0)
+		(*count)++;
+	while (num != 0)
+	{
+		binary += (num % 2) * base;
+		base *= 10;
+		num /= 2;
+		(*count)++;
+	}
+	_printf("%d", binary);
+	return (0);
+}
+/**
  * _printf_helper - function that produces output according to a format
  * @format: character string - composed of zero or more directives.
  * @arg: character string - composed of zero or more directives.
@@ -93,6 +115,10 @@ int _printf_helper(const char *format, va_list arg, int *i)
 	case 'd':
 		num = va_arg(arg, int);
 		_rec_number(num, &res);
+		break;
+	case 'b':
+		num = va_arg(arg, int);
+		_printf_binary(num, &res);
 		break;
 	default:
 		_putchar(format[*i]);
