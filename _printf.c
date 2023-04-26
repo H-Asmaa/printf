@@ -74,6 +74,12 @@ int _printf_binary(unsigned int num, int *count)
 	int binary[64] = {0};
 	int i = 0;
 
+	if (num == 0)
+	{
+		_printf("%d", 0);
+		(*count)++;
+		return (0);
+	}
 	while (num > 0)
 	{
 		binary[i] = num & 1;

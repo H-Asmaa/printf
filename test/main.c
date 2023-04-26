@@ -11,19 +11,22 @@
 
 int main(void)
 {
-    int len, len1;
+    	int len_1, len_2;
 
-    len = printf("%b\n", 255);
-    len1 = _printf("%b\n", 255);
-    printf("%d\n", len);
-    printf("%d\n", len1);
-    len = printf("%b\n", 0);
-    len1 = _printf("%b\n", 0);
-    printf("%d\n", len);
-    printf("%d\n", len1);
-    len = printf("%b\n", INT_MAX);
-    len1 = _printf("%b\n", INT_MAX);
-    printf("%d\n", len);
-    printf("%d\n", len1);
+	/* ===========> %b <=========== */
+	printf("----------------------\n");
+	printf("---> BINARY CASES <---\n");
+	printf("----------------------\n");
+	len_1 = printf("%b\n", 0);
+	len_2 = _printf("%b\n", 0);
+	assert(len_1 == len_2);
+
+	len_2 = printf("%b\n", 255);
+	len_1 = _printf("%b\n", 255);
+	assert(len_1 == len_2);
+
+	len_1 = printf("%b\n", UINT_MAX);
+	len_2 = _printf("%b\n", UINT_MAX);
+	assert(len_1 == len_2);
     return (0);
 }
