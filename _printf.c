@@ -64,7 +64,7 @@ int _printf_string(char *tmp)
 	return (res);
 }
 /**
- * _printf_binary - print string
+ * _printf_binary - print stri
  * @num: variable
  * @count: pointer
  * Return: int
