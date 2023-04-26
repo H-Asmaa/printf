@@ -170,3 +170,11 @@ The problem is in the size of int, when we multiply by
 We decicde to use long int as a type for num;
 We check with the checker and change it in case it's not accepted.
 -->
+
+
+- buffer
+-
+
+
+
+- i wanna see if i change unsing int, to int if it goona work same
