@@ -69,9 +69,9 @@ int _printf_string(char *tmp)
  * @count: pointer
  * Return: int
  */
-int _printf_binary(unsigned int num, int *count)
+int _printf_binary(int num, int *count)
 {
-	unsigned int binary[64];
+	int binary[64] = {0};
 	int j, i = 0;
 
 	if (num == 0)
