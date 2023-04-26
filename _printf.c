@@ -69,9 +69,9 @@ int _printf_string(char *tmp)
  * @count: pointer
  * Return: int
  */
-int _printf_binary(int num, int *count)
+int _printf_binary(unsigned int num, int *count)
 {
-	int binary[64] = {0};
+	unsigned int binary[64];
 	int j, i = 0;
 
 	if (num == 0)
@@ -125,7 +125,7 @@ int _printf_helper(const char *format, va_list arg, int *i)
 		_rec_number(num, &res);
 		break;
 	case 'b':
-		num = va_arg(arg, int);
+		num = va_arg(arg, unsigned int);
 		_printf_binary(num, &res);
 		break;
 	default:
