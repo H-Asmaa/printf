@@ -69,27 +69,11 @@ int _printf_string(char *tmp)
  * @count: pointer
  * Return: int
  */
-int _printf_binary(unsigned long int num, int *count)
+int _printf_binary(unsigned int num, int *count)
 {
 	unsigned int binary = 0, base = 1;
-	int int_max[64] = {0}, i = 0, j;
 
-	if (num == 2147483647 || num == 4294967295)
-	{
-		while (num > 0)
-		{
-			int_max[i] = num & 1;
-			num = num >> 1;
-			i++;
-		}
-		for (j = i - 1; j >= 0; j--)
-		{
-			_printf("%d", int_max[j]);
-			(*count)++;
-		}
-		return (0);
-	}
-	else if (num == 0)
+	if (num == 0)
 	{
 		(*count)++;
 		_putchar('0');
