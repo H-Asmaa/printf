@@ -69,28 +69,20 @@ int _printf_string(char *tmp)
  * @count: pointer
  * Return: int
  */
-int _printf_binary(unsigned int num, int *count)
+int _printf_binary(int num, int *count)
 {
-	int binary[64] = {0};
-	int i = 0;
+	int binary = 0, base = 1;
 
 	if (num == 0)
-	{
 		(*count)++;
-		_putchar('0');
-		return (0);
-	}
-	while (num > 0)
+	while (num != 0)
 	{
-		binary[i] = num & 1;
-		num = num >> 1;
-		i++;
-	}
-	for (int j = i - 1; j >= 0; j--)
-	{
-		_printf("%d", binary[j]);
+		binary += (num % 2) * base;
+		base *= 10;
+		num /= 2;
 		(*count)++;
 	}
+	_printf("%d", binary);
 	return (0);
 }
 /**
