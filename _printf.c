@@ -69,44 +69,29 @@ int _printf_string(char *tmp)
  * @count: pointer
  * Return: int
  */
-int _printf_binary(unsigned int num, int *count)
+int _printf_binary(int num, int *count)
 {
-	unsigned int binary = 0, base = 1;
-	int int_max[64] = {0}, i = 0, j;
+	int binary[64] = {0};
+	int j, i = 0;
 
-	if (num == 2147483647 || num == 4294967295)
+	if (num == 0)
 	{
-		while (num > 0)
-		{
-			int_max[i] = num & 1;
-			num = num >> 1;
-			i++;
-		}
-		for (j = i - 1; j >= 0; j--)
-		{
-			_printf("%d", int_max[j]);
-			(*count)++;
-		}
-		return (0);
-	}
-	else if (num == 0)
-	{
-		(*count)++;
 		_putchar('0');
+		(*count)++;
 		return (0);
 	}
-	else
+	while (num > 0)
 	{
-		while (num != 0)
-		{
-			binary += (num % 2) * base;
-			base *= 10;
-			num /= 2;
-			(*count)++;
-		}
-		_printf("%d", binary);
-		return (0);
+		binary[i] = num & 1;
+		num = num >> 1;
+		i++;
 	}
+	for (j = i - 1; j >= 0; j--)
+	{
+		_printf("%d", binary[j]);
+		(*count)++;
+	}
+	return (0);
 }
 /**
  * _printf_helper - function that produces output according to a format
@@ -140,7 +125,7 @@ int _printf_helper(const char *format, va_list arg, int *i)
 		_rec_number(num, &res);
 		break;
 	case 'b':
-		num = va_arg(arg, unsigned int);
+		num = va_arg(arg, int);
 		_printf_binary(num, &res);
 		break;
 	default:

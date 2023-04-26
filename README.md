@@ -20,7 +20,7 @@
 <li>You don’t have to handle precision</li>
 <li>You don’t have to handle the length modifiers</li>
 </ul>
-<h6>Psuedo code :</h6>
+<!--<h6>Psuedo code :</h6>-->
 
 </body>
 <!--
