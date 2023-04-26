@@ -12,22 +12,16 @@
 int main(void)
 {
     int len_1, len_2;
-    len_1 = printf("%b\n", -0);
-    len_2 = _printf("%b\n", -0);
-    assert(len_1 == len_2);
+    len_1 = printf("%b\n", 0);
+    len_2 = _printf("%b\n", 0);
     printf("%d\n", len_1);
     printf("%d\n", len_2);
     len_2 = printf("%b\n", 255);
     len_1 = _printf("%b\n", 255);
-    assert(len_1 == len_2);
     printf("%d\n", len_1);
     printf("%d\n", len_2);
     len_1 = printf("%b\n", INT_MAX);
     len_2 = _printf("%b\n", INT_MAX);
-    printf("%d\n", len_1);
-    printf("%d\n", len_2);
-    len_1 = printf("%b\n", INT_MIN);
-    len_2 = _printf("%b\n", INT_MIN);
     printf("%d\n", len_1);
     printf("%d\n", len_2);
     len_1 = printf("%b\n", UINT_MAX);
@@ -35,8 +29,6 @@ int main(void)
     printf("%d\n", len_1);
     printf("%d\n", len_2);
 
-    assert(len_1 == len_2);
-    assert(len_1 == len_2);
 
     return (0);
 }

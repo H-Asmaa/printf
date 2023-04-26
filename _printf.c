@@ -1,6 +1,5 @@
 #include "main.h"
 #include <stdio.h>
-#include <limits.h>
 /**
  * _rec_number - recursive number
  * @num: variable
@@ -70,12 +69,12 @@ int _printf_string(char *tmp)
  * @count: pointer
  * Return: int
  */
-int _printf_binary(unsigned int num, int *count)
+int _printf_binary(unsigned long int num, int *count)
 {
 	unsigned int binary = 0, base = 1;
 	int int_max[64] = {0}, i = 0, j;
 
-	if (num == INT_MAX || num == INT_MIN || num == UINT_MAX)
+	if (num == 2147483647 || num == 4294967295)
 	{
 		while (num > 0)
 		{
@@ -141,7 +140,7 @@ int _printf_helper(const char *format, va_list arg, int *i)
 		_rec_number(num, &res);
 		break;
 	case 'b':
-		num = va_arg(arg, unsigned int);
+		num = va_arg(arg, unsigned long int);
 		_printf_binary(num, &res);
 		break;
 	default:
