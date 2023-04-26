@@ -69,28 +69,29 @@ int _printf_string(char *tmp)
  * @count: pointer
  * Return: int
  */
-int _printf_binary(int num, int *count)
+int _printf_binary(unsigned int num, int *count)
 {
-	int binary = 0, base = 1;
+	unsigned int binary[64];
+	int j, i = 0;
 
 	if (num == 0)
 	{
-		(*count)++;
 		_putchar('0');
+		(*count)++;
 		return (0);
 	}
-	else
+	while (num > 0)
 	{
-		while (num != 0)
-		{
-			binary += (num % 2) * base;
-			base *= 10;
-			num /= 2;
-			(*count)++;
-		}
-		_printf("%d", binary);
-		return (0);
+		binary[i] = num & 1;
+		num = num >> 1;
+		i++;
 	}
+	for (j = i - 1; j >= 0; j--)
+	{
+		_printf("%d", binary[j]);
+		(*count)++;
+	}
+	return (0);
 }
 /**
  * _printf_helper - function that produces output according to a format
@@ -124,8 +125,7 @@ int _printf_helper(const char *format, va_list arg, int *i)
 		_rec_number(num, &res);
 		break;
 	case 'b':
-		num = va_arg(arg, int);
-		_printf_binary(num, &res);
+		_printf_binary(va_arg(arg, unsigned int), &res);
 		break;
 	default:
 		_putchar(format[*i]);
