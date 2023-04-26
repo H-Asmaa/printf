@@ -22,10 +22,19 @@ int main(void)
     assert(len_1 == len_2);
     printf("%d\n", len_1);
     printf("%d\n", len_2);
+    len_1 = printf("%b\n", INT_MAX);
+    len_2 = _printf("%b\n", INT_MAX);
+    printf("%d\n", len_1);
+    printf("%d\n", len_2);
     len_1 = printf("%b\n", INT_MIN);
     len_2 = _printf("%b\n", INT_MIN);
     printf("%d\n", len_1);
     printf("%d\n", len_2);
+    len_1 = printf("%b\n", UINT_MAX);
+    len_2 = _printf("%b\n", UINT_MAX);
+    printf("%d\n", len_1);
+    printf("%d\n", len_2);
+
     assert(len_1 == len_2);
     assert(len_1 == len_2);
 
