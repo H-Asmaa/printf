@@ -125,7 +125,8 @@ int _printf_helper(const char *format, va_list arg, int *i)
 		_rec_number(num, &res);
 		break;
 	case 'b':
-		_printf_binary(va_arg(arg, unsigned int), &res);
+		num = va_arg(arg, unsigned int);
+		_printf_binary(num, &res);
 		break;
 	default:
 		_putchar(format[*i]);
