@@ -71,7 +71,7 @@ int _printf_string(char *tmp)
  */
 int _printf_binary(unsigned int num, int *count)
 {
-	unsigned int binary[64];
+	unsigned int binary[64] = {0};
 	int j, i = 0;
 
 	if (num == 0)
