@@ -71,27 +71,42 @@ int _printf_string(char *tmp)
  */
 int _printf_binary(unsigned int num, int *count)
 {
-	int binary[64];
-	int j, i = 0;
+	unsigned int binary = 0, base = 1;
+	int int_max[64] = {0}, i = 0, j;
 
-	if (num == 0)
+	if (num == 2147483647 || num == 4294967295)
 	{
-		_putchar('0');
-		(*count)++;
+		while (num > 0)
+		{
+			int_max[i] = num & 1;
+			num = num >> 1;
+			i++;
+		}
+		for (j = i - 1; j >= 0; j--)
+		{
+			_printf("%d", int_max[j]);
+			(*count)++;
+		}
 		return (0);
 	}
-	while (num > 0)
+	else if (num == 0)
 	{
-		binary[i] = num & 1;
-		num = num >> 1;
-		i++;
-	}
-	for (j = i - 1; j >= 0; j--)
-	{
-		_printf("%d", binary[j]);
 		(*count)++;
+		_putchar('0');
+		return (0);
 	}
-	return (0);
+	else
+	{
+		while (num != 0)
+		{
+			binary += (num % 2) * base;
+			base *= 10;
+			num /= 2;
+			(*count)++;
+		}
+		_printf("%d", binary);
+		return (0);
+	}
 }
 /**
  * _printf_helper - function that produces output according to a format
@@ -125,7 +140,7 @@ int _printf_helper(const char *format, va_list arg, int *i)
 		_rec_number(num, &res);
 		break;
 	case 'b':
-		num = va_arg(arg, int);
+		num = va_arg(arg, unsigned int);
 		_printf_binary(num, &res);
 		break;
 	default:
